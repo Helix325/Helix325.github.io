@@ -3,13 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的个人名片 · 开发者</title>
-    <!-- 使用 Google Fonts 字体，让页面更美观 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
-    <!-- Font Awesome 图标库 (免费版本) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>林一 · 简历风格个人主页</title>
+    <!-- 使用柔和的中性色体系 & 极简现代风格，适合GitHub个人页 -->
     <style>
         * {
             margin: 0;
@@ -18,371 +13,611 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(145deg, #f6f9fc 0%, #e9f0f5 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1.5rem;
-            line-height: 1.5;
+            background-color: #f8fafc;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
             color: #1e293b;
+            padding: 2rem 1rem;
         }
 
-        .card {
-            max-width: 700px;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-radius: 2.5rem;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.6) inset;
-            padding: 2.5rem 2rem;
-            transition: transform 0.2s ease;
+        /* 主卡片容器 — 模拟一张精致的“简历” */
+        .resume-card {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 32px;
+            box-shadow: 0 20px 35px -8px rgba(0, 34, 64, 0.1), 0 8px 12px -4px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transition: all 0.2s ease;
         }
 
-        .card:hover {
-            transform: scale(1.01);
+        /* 页眉区域：名字 + 简短头衔 + GitHub 标识 */
+        .header {
+            padding: 2.5rem 2.5rem 1.5rem 2.5rem;
+            background: linear-gradient(145deg, #ffffff 0%, #f9fcff 100%);
+            border-bottom: 1px solid #e9eef3;
         }
 
-        /* 头像区域 */
-        .avatar {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .avatar-circle {
-            width: 120px;
-            height: 120px;
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3.5rem;
-            font-weight: 500;
-            box-shadow: 0 12px 30px -8px rgba(59, 130, 246, 0.5);
-            border: 4px solid rgba(255, 255, 255, 0.8);
-        }
-
-        /* 姓名 + 头衔 */
-        .name {
-            text-align: center;
-            margin-bottom: 0.5rem;
-        }
-
-        .name h1 {
-            font-size: 2.4rem;
+        .name-title h1 {
+            font-size: 3.2rem;
             font-weight: 700;
-            letter-spacing: -0.02em;
-            background: linear-gradient(to right, #1e293b, #3b82f6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 0.25rem;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            color: #0b1c2f;
+            margin-bottom: 0.3rem;
         }
 
-        .name .title {
+        .name-title .badge {
+            display: inline-block;
+            background: #dbeafe;
+            color: #1d4ed8;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            margin-top: 0.5rem;
+            border: 1px solid rgba(29, 78, 216, 0.15);
+        }
+
+        .subhead {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.2rem;
+        }
+
+        .subhead p {
             font-size: 1.2rem;
+            color: #475569;
+            font-weight: 400;
+            max-width: 600px;
+        }
+
+        .github-corner {
+            background: #0f172a;
+            padding: 0.6rem 1.4rem;
+            border-radius: 60px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
             font-weight: 500;
-            color: #4b5563;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.1s;
+            border: 1px solid #1e2a3a;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .github-corner:hover {
+            background: #1e2a3a;
+            transform: scale(1.02);
+            text-decoration: none;
+        }
+
+        .github-corner i {
+            font-size: 1.2rem;
+            font-style: normal;
+            filter: drop-shadow(0 2px 2px rgba(0,0,0,0.3));
+        }
+
+        /* 联系方式小行 */
+        .contact-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px dashed #dce5ed;
+            font-size: 0.95rem;
+            color: #3b4e62;
+        }
+
+        .contact-item {
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            flex-wrap: wrap;
+            gap: 8px;
         }
 
-        .title i {
-            color: #3b82f6;
-            font-size: 1rem;
-        }
-
-        .badge {
-            background: rgba(59, 130, 246, 0.1);
-            padding: 0.25rem 0.75rem;
-            border-radius: 40px;
-            font-size: 0.85rem;
+        .contact-item span:first-child {
             font-weight: 500;
-            color: #3b82f6;
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            white-space: nowrap;
+            color: #5b6f84;
+            min-width: 70px;
         }
 
-        /* 分隔装饰 */
-        .divider {
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(to right, #3b82f6, #a78bfa);
-            border-radius: 4px;
-            margin: 1.8rem auto 2rem auto;
-            opacity: 0.6;
-        }
-
-        /* 简介段落 */
-        .bio {
-            text-align: center;
-            font-size: 1.05rem;
-            color: #334155;
-            margin-bottom: 2rem;
-            padding: 0 0.5rem;
-        }
-
-        .bio a {
-            color: #3b82f6;
+        .contact-item a {
+            color: #1e293b;
             text-decoration: none;
-            font-weight: 500;
-            border-bottom: 1px dashed #3b82f6;
+            border-bottom: 1px dotted #9bb0c7;
         }
 
-        .bio a:hover {
-            color: #1d4ed8;
+        .contact-item a:hover {
+            color: #0f2b4b;
+            border-bottom: 1px solid #2563eb;
         }
 
-        /* 技能标签区 */
-        .skills {
+        /* 主要内容两列布局 */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 2.2fr;
+            gap: 0;
+            background: #ffffff;
+        }
+
+        /* 左侧栏 — 个人简述、技能、爱好 */
+        .sidebar {
+            background: #f7fafd;
+            padding: 2rem 2rem 2.5rem 2rem;
+            border-right: 1px solid #e2eaf2;
+        }
+
+        .section {
+            margin-bottom: 2.2rem;
+        }
+
+        .section h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #54708f;
+            margin-bottom: 1.2rem;
+            border-bottom: 1.5px solid #d1dfeb;
+            padding-bottom: 0.4rem;
+        }
+
+        /* 关于我 */
+        .about p {
+            font-size: 1rem;
+            color: #253746;
+            margin-bottom: 1rem;
+        }
+
+        .highlight-quote {
+            background: #e6f0f9;
+            padding: 1.2rem 1.2rem;
+            border-radius: 20px;
+            font-style: italic;
+            border-left: 6px solid #3070b0;
+            color: #0f344b;
+            margin: 1.5rem 0 1rem 0;
+            font-size: 0.95rem;
+        }
+
+        /* 技能组 */
+        .skill-tags {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
-            gap: 0.6rem;
-            margin-bottom: 2.5rem;
+            gap: 10px;
+            margin-top: 0.5rem;
         }
 
         .skill-tag {
             background: white;
-            padding: 0.5rem 1.2rem;
+            padding: 0.4rem 1.2rem;
             border-radius: 40px;
             font-size: 0.9rem;
             font-weight: 500;
-            color: #1e293b;
-            box-shadow: 0 4px 6px -2px rgba(0,0,0,0.05), 0 0 0 1px rgba(0,0,0,0.02);
-            border: 1px solid rgba(255,255,255,0.7);
-            transition: all 0.1s ease;
-        }
-
-        .skill-tag:hover {
-            background: #f8fafc;
-            box-shadow: 0 8px 12px -6px rgba(59,130,246,0.2);
-            border-color: #b2d0ff;
-        }
-
-        /* 项目展示卡片 */
-        .projects-title {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #0f172a;
-            margin-bottom: 1.2rem;
-            border-left: 5px solid #3b82f6;
-            padding-left: 1rem;
-        }
-
-        .projects {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            margin-bottom: 2.5rem;
-        }
-
-        .project-item {
-            background: rgba(255,255,255,0.5);
-            border-radius: 1.2rem;
-            padding: 1rem 1.2rem;
-            border: 1px solid rgba(255,255,255,0.8);
-            box-shadow: 0 4px 8px -4px rgba(0,0,0,0.04);
-            transition: all 0.15s ease;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .project-item:hover {
-            background: white;
-            border-color: #cbd5e1;
-            box-shadow: 0 12px 20px -12px rgba(0,0,0,0.15);
-        }
-
-        .project-info h3 {
-            font-size: 1.15rem;
-            font-weight: 600;
-            margin-bottom: 0.2rem;
-            color: #0f172a;
-        }
-
-        .project-info p {
-            font-size: 0.9rem;
-            color: #475569;
-        }
-
-        .project-link {
-            background: #eef2ff;
-            padding: 0.5rem 1rem;
-            border-radius: 2rem;
-            color: #3b82f6;
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3rem;
-            border: 1px solid transparent;
+            color: #163a57;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            border: 1px solid #cbddee;
             transition: 0.1s;
         }
 
-        .project-link:hover {
-            background: #dbeafe;
-            border-color: #a5c9ff;
-            color: #1d4ed8;
+        .skill-tag:hover {
+            background: #ddeeff;
+            border-color: #6f9ed8;
         }
 
-        /* 社交链接区 */
-        .social-links {
+        /* 语言 / 工具 */
+        .lang-item {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed #c7d9e9;
+            font-size: 0.95rem;
+        }
+
+        .lang-item span:first-child {
+            font-weight: 500;
+        }
+
+        .lang-item span:last-child {
+            color: #32658c;
+        }
+
+        /* 右侧区域：经历、项目、教育 */
+        .right-col {
+            padding: 2rem 2.5rem 2.5rem 2.5rem;
+            background: #ffffff;
+        }
+
+        .entry {
+            margin-bottom: 2rem;
+        }
+
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            margin-bottom: 0.3rem;
+        }
+
+        .entry-title {
+            font-size: 1.25rem;
+            font-weight: 650;
+            color: #0b262f;
+            letter-spacing: -0.01em;
+        }
+
+        .entry-sub {
+            font-weight: 600;
+            color: #32658c;
+            font-size: 1rem;
+        }
+
+        .entry-date {
+            font-size: 0.9rem;
+            background: #eaf1f9;
+            padding: 0.2rem 0.9rem;
+            border-radius: 30px;
+            color: #1d4460;
+            font-weight: 500;
+        }
+
+        .entry-org {
+            font-weight: 500;
+            color: #4b637b;
+            margin-bottom: 0.5rem;
+        }
+
+        .entry-desc {
+            font-size: 0.96rem;
+            color: #2c3f4f;
+            margin-top: 0.6rem;
+            padding-left: 0.2rem;
+            list-style-type: none;
+        }
+
+        .entry-desc li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .entry-desc li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #2f6ea2;
+            font-weight: bold;
+        }
+
+        .project-grid {
+            display: flex;
+            flex-direction: column;
             gap: 1.5rem;
-            margin: 2.2rem 0 1rem 0;
+        }
+
+        .project-item {
+            border-bottom: 1px solid #e3ecf3;
+            padding-bottom: 1.3rem;
+        }
+
+        .project-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .project-name {
+            display: flex;
+            align-items: center;
+            gap: 8px;
             flex-wrap: wrap;
         }
 
-        .social-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: white;
-            color: #334155;
-            font-size: 1.5rem;
-            box-shadow: 0 8px 18px -8px rgba(0,0,0,0.1), 0 0 0 1px rgba(0,0,0,0.02);
-            transition: all 0.15s ease;
+        .project-name a {
+            font-size: 1.2rem;
+            font-weight: 650;
+            color: #1d4460;
             text-decoration: none;
+            border-bottom: 1px dotted transparent;
         }
 
-        .social-icon:hover {
-            background: #3b82f6;
-            color: white;
-            transform: translateY(-4px);
-            box-shadow: 0 16px 24px -8px #3b82f680;
+        .project-name a:hover {
+            border-bottom: 1px dotted #2c5a7a;
+            color: #102c40;
         }
 
-        /* 页脚小字 */
+        .project-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 8px 0 6px 0;
+        }
+
+        .stack-tag {
+            background: #ecf3f9;
+            font-size: 0.75rem;
+            padding: 0.2rem 0.9rem;
+            border-radius: 20px;
+            color: #1a445b;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+        }
+
+        .project-desc {
+            color: #384e61;
+            font-size: 0.95rem;
+        }
+
+        /* 教育简表 */
+        .edu-item {
+            margin-bottom: 1.2rem;
+        }
+        .edu-degree {
+            font-weight: 650;
+        }
+
+        /* footer */
         .footer-note {
-            text-align: center;
-            font-size: 0.8rem;
-            color: #94a3b8;
-            margin-top: 2.2rem;
-            border-top: 1px solid #e2e8f0;
-            padding-top: 1.2rem;
+            background: #f4f9ff;
+            padding: 1.2rem 2.5rem;
+            border-top: 1px solid #d9e6f2;
+            color: #3b556a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
         }
 
-        /* 响应式调整 */
-        @media (max-width: 480px) {
-            .card {
-                padding: 1.8rem 1.2rem;
-                border-radius: 2rem;
+        .footer-note .gh-stats {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-note a {
+            color: #1e405e;
+            text-decoration: underline dotted;
+        }
+
+        /* 响应式 */
+        @media (max-width: 750px) {
+            .main-content {
+                grid-template-columns: 1fr;
             }
-            .name h1 {
-                font-size: 2rem;
+            .sidebar {
+                border-right: none;
+                border-bottom: 1px solid #dde5ed;
             }
-            .avatar-circle {
-                width: 90px;
-                height: 90px;
-                font-size: 2.8rem;
+            .header {
+                padding: 1.8rem;
             }
-            .project-item {
+            .name-title h1 {
+                font-size: 2.5rem;
+            }
+            .subhead {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 0.8rem;
+                gap: 1rem;
             }
-            .project-link {
-                align-self: flex-end;
+            .contact-bar {
+                gap: 1rem;
+                flex-direction: column;
             }
+        }
+
+        @media (max-width: 450px) {
+            .entry-header {
+                flex-direction: column;
+                gap: 0.3rem;
+            }
+        }
+
+        /* 模拟github图标用简单的字符 */
+        .icon-git {
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+        .emoji-icon {
+            font-size: 1.1rem;
+            filter: none;
+        }
+        hr {
+            border: none;
+            border-top: 1px solid #e0ebf5;
+            margin: 1rem 0;
         }
     </style>
 </head>
 <body>
-    <div class="card">
-        <!-- 头像 (这里用了首字母占位，如果你有头像图片，可以替换为 <img> 标签) -->
-        <div class="avatar">
-            <div class="avatar-circle">
-                <span>K</span> <!-- 可以换成你自己的头像首字母或 emoji -->
+    <div class="resume-card">
+        <!-- 头部区域：姓名 + GitHub 直达 -->
+        <div class="header">
+            <div class="name-title">
+                <h1>林一 <span style="font-weight: 400; color: #436684; font-size: 2rem;">/ YI LIN</span></h1>
+                <div class="badge">✨ 前端开发 · 开源爱好者 · 简历风格个人页</div>
+            </div>
+            <div class="subhead">
+                <p>代码是逻辑的诗，界面是交互的艺术 —— 热爱构建优雅的web体验。</p>
+                <a href="#" class="github-corner" target="_blank" rel="noopener">
+                    <span class="icon-git">⌨️</span> 
+                    <span>github.com/linyi</span>
+                    <span style="font-size: 0.8rem; opacity: 0.8;">↗</span>
+                </a>
+            </div>
+            <!-- 联系方式条，可替换真实用户 -->
+            <div class="contact-bar">
+                <div class="contact-item"><span>📧 邮箱</span> <a href="mailto:yi.lin@example.dev">yi.lin@example.dev</a></div>
+                <div class="contact-item"><span>📱 电话</span> <span>+86 130 0000 1234</span></div>
+                <div class="contact-item"><span>📍 地点</span> <span>上海 / 远程</span></div>
+                <div class="contact-item"><span>🔗 GitHub</span> <a href="#">@linyi_dev</a></div>
             </div>
         </div>
 
-        <!-- 姓名 + 头衔 -->
-        <div class="name">
-            <h1>Kai Zhang</h1> <!-- 修改为你的名字 -->
-            <div class="title">
-                <i class="fas fa-code"></i> 全栈开发者 · 独立创作者
-                <span class="badge"><i class="far fa-gem"></i> 微博应用作者</span>
+        <!-- 主内容：左侧 (个人/技能) + 右侧 (经历/项目) -->
+        <div class="main-content">
+            <!-- 左侧边栏 -->
+            <div class="sidebar">
+                <!-- 简短个人介绍 -->
+                <section class="section about">
+                    <h3>关于</h3>
+                    <p>全栈偏前，5年经验。热爱组件设计、性能优化和简洁的代码。相信好的简历页面就像一份优雅的PR——清晰、诚实、有亮点。</p>
+                    <div class="highlight-quote">
+                        “ 在这个仓库里，我本身就是README。”
+                    </div>
+                </section>
+
+                <!-- 技能组 -->
+                <section class="section">
+                    <h3>技术栈</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">JavaScript/ES6</span>
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Vue</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">HTML5/CSS3</span>
+                        <span class="skill-tag">Tailwind</span>
+                        <span class="skill-tag">Git/GitHub</span>
+                        <span class="skill-tag">Vite</span>
+                        <span class="skill-tag">Jest</span>
+                        <span class="skill-tag">Figma</span>
+                    </div>
+                </section>
+
+                <!-- 语言能力 -->
+                <section class="section">
+                    <h3>语言</h3>
+                    <div class="lang-item"><span>中文</span> <span>母语</span></div>
+                    <div class="lang-item"><span>英文</span> <span>专业工作水平 (CET-6)</span></div>
+                </section>
+
+                <!-- 一些日常工具/偏好 -->
+                <section class="section">
+                    <h3>常用工具</h3>
+                    <div class="skill-tags" style="margin-top: 0;">
+                        <span class="skill-tag">VSCode</span>
+                        <span class="skill-tag">iTerm2</span>
+                        <span class="skill-tag">Postman</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Notion</span>
+                    </div>
+                </section>
+
+                <!-- 兴趣/其他 -->
+                <section class="section">
+                    <h3>开源 & 社区</h3>
+                    <div style="margin-bottom: 0.5rem;">🌱 维护过 <strong>vite-plugin-xx</strong> (120+ ⭐)</div>
+                    <div>📢 翻译过 MDN 部分文档 · 技术文章译者</div>
+                </section>
             </div>
-        </div>
 
-        <!-- 简短介绍：说明这是你微博应用的官网 -->
-        <div class="bio">
-            🚀 这是我的个人名片，也是 <a href="#" target="_blank">「光影相册」</a> 微博小工具的官方网站。热爱开源、摄影与咖啡。
-        </div>
+            <!-- 右侧主要经历和项目 -->
+            <div class="right-col">
+                <!-- 工作经验 -->
+                <section class="section" style="margin-bottom: 2rem;">
+                    <h3>📌 工作经历</h3>
+                    <div class="entry">
+                        <div class="entry-header">
+                            <span class="entry-title">前端工程师</span>
+                            <span class="entry-date">2022 — 至今</span>
+                        </div>
+                        <div class="entry-org">⦿ 云创科技 / 上海 (远程混合)</div>
+                        <ul class="entry-desc">
+                            <li>负责B端后台管理系统重构，使用React+TypeScript，模块复用率提升35%。</li>
+                            <li>设计可维护的组件库并集成到Storybook，团队开发效率提高20%。</li>
+                            <li>推动代码审查和前端自动化测试，显著减少生产环境bug。</li>
+                        </ul>
+                    </div>
 
-        <div class="divider"></div>
+                    <div class="entry">
+                        <div class="entry-header">
+                            <span class="entry-title">全栈开发 (实习)</span>
+                            <span class="entry-date">2020 — 2022</span>
+                        </div>
+                        <div class="entry-org">⦿ 智联设计工作室 / 杭州</div>
+                        <ul class="entry-desc">
+                            <li>基于Vue3 + Node.js开发了三个中小型企业的官网及内容后台。</li>
+                            <li>使用Git进行协作，并配置GitHub Actions实现自动化构建部署。</li>
+                            <li>与设计师紧密配合，完成交互动效与响应式页面。</li>
+                        </ul>
+                    </div>
+                </section>
 
-        <!-- 技能标签 (可以替换为你自己的技能) -->
-        <div class="skills">
-            <span class="skill-tag">JavaScript / TypeScript</span>
-            <span class="skill-tag">React & Vue</span>
-            <span class="skill-tag">Node.js</span>
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">SwiftUI</span>
-            <span class="skill-tag">微信小程序</span>
-        </div>
+                <!-- 个人项目 (重点突出GitHub风格) -->
+                <section class="section">
+                    <h3>📁 项目 · GitHub 亮点</h3>
+                    <div class="project-grid">
+                        <div class="project-item">
+                            <div class="project-name">
+                                <a href="#">📦 react-smooth-tabs</a>
+                                <span class="stack-tag">React</span>
+                                <span class="stack-tag">TypeScript</span>
+                                <span class="stack-tag">Framer Motion</span>
+                            </div>
+                            <div class="project-desc">
+                                轻量级标签组件，支持手势滑动与完美过渡。发布为npm包，周下载量2k+，GitHub 180⭐。
+                            </div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-name">
+                                <a href="#">🕹️ leetcode-daily-bot</a>
+                                <span class="stack-tag">Python</span>
+                                <span class="stack-tag">GitHub Action</span>
+                            </div>
+                            <div class="project-desc">
+                                自动抓取力扣每日一题并通过issue推送，帮助几十位小伙伴保持刷题习惯。完全开源。
+                            </div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-name">
+                                <a href="#">💼 这个简历页本身 (resume-on-github)</a>
+                                <span class="stack-tag">HTML/CSS</span>
+                                <span class="stack-tag">Flex/Grid</span>
+                            </div>
+                            <div class="project-desc">
+                                极简但精致的个人简历页面，设计初衷就是放在GitHub个人主页。响应式、无依赖、开箱即用。
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
-        <!-- 项目展示区：替换为你自己的项目 -->
-        <div class="projects-title">
-            <i class="fas fa-rocket" style="color:#3b82f6;"></i> 精选项目
-        </div>
-        <div class="projects">
-            <div class="project-item">
-                <div class="project-info">
-                    <h3>📸 光影相册 · 微博小工具</h3>
-                    <p>一键备份微博照片，生成年度回忆视频。已服务 2k+ 用户。</p>
+                <!-- 教育 -->
+                <section class="section" style="margin-top: 2rem;">
+                    <h3>🎓 教育</h3>
+                    <div class="edu-item">
+                        <div class="entry-header">
+                            <span class="entry-sub">计算机科学与技术 学士</span>
+                            <span class="entry-date">2017 – 2021</span>
+                        </div>
+                        <div>上海理工大学 ·  GPA 3.8/4.0  ·  优秀毕业设计</div>
+                    </div>
+                </section>
+
+                <!-- 额外小彩蛋：类似GitHub的贡献暗示 -->
+                <hr>
+                <div style="display: flex; gap: 8px; align-items: center; color: #386282; font-size: 0.9rem;">
+                    <span>⚡️ 每日提交</span>
+                    <span style="flex:1; height: 6px; background: #e1eefb; border-radius: 4px;"><span style="display: block; width: 70%; height: 6px; background: #2f6b9e; border-radius: 4px;"></span></span>
+                    <span>70% 活跃度</span>
                 </div>
-                <a href="#" class="project-link" target="_blank">查看详情 <i class="fas fa-arrow-right"></i></a>
-            </div>
-            <div class="project-item">
-                <div class="project-info">
-                    <h3>📊 微博评论词云生成器</h3>
-                    <p>输入微博链接，自动生成评论词云图，洞察粉丝心声。</p>
-                </div>
-                <a href="#" class="project-link" target="_blank">GitHub <i class="fas fa-arrow-right"></i></a>
-            </div>
-            <div class="project-item">
-                <div class="project-info">
-                    <h3>🕒 开发者极简番茄钟</h3>
-                    <p>开源、轻量的 Pomodoro 应用，支持多平台。</p>
-                </div>
-                <a href="#" class="project-link" target="_blank">试试看 <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
 
-        <!-- 社交链接：可以改成你真实的微博 / GitHub 等地址 -->
-        <div class="social-links">
-            <a href="#" class="social-icon" target="_blank" aria-label="微博"><i class="fab fa-weibo"></i></a>
-            <a href="#" class="social-icon" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-            <a href="#" class="social-icon" target="_blank" aria-label="知乎"><i class="fab fa-zhihu"></i></a>
-            <a href="#" class="social-icon" target="_blank" aria-label="小红书"><i class="fab fa-xiaohongshu"></i></a>
-            <a href="#" class="social-icon" target="_blank" aria-label="电子邮箱"><i class="fas fa-envelope"></i></a>
-        </div>
-
-        <!-- 页脚：可以改成你想要的备案信息或一句话 -->
+        <!-- 底部：类似个人页脚注，显示更多链接 -->
         <div class="footer-note">
-            ✨ 保持好奇 · 保持热爱 · 保持连接 ✨ <br style="display: none;"> 
-            <span style="font-size:0.75rem;">© 2025 你的名字 / 个人名片</span>
+            <div>🧑‍💻 林一 · 随时可联系 · 简历更新于 2025</div>
+            <div class="gh-stats">
+                <span>⭐ 开源项目 350+ stars</span>
+                <span>📌 追随者 48</span>
+                <span><a href="#">打印版本</a></span>
+            </div>
         </div>
     </div>
+    <!-- 注：所有文字仅为占位，可替换为你自己的内容；链接为 '#' 可替换为真实GitHub地址 -->
 </body>
 </html>
